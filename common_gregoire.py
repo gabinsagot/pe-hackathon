@@ -27,6 +27,31 @@ def into_numpy(d) :
 into_numpy(RAW_SHAPES)
 
 
+# +
+def emplacements_possibles(P,B) :
+    placements = []
+    for i in range(len(B)) :
+        for j in range(len(B[0])) :
+            if peut_placer(P,B,(i,j)) :
+                placement.append(1)
+            else :
+                placement.append(0)
+            
+
+def peut_placer(P,B,loc) :
+    px,py = 0,0
+    for i in range(len(P)):
+        for j in range(len(P[i])) :
+            if P[i][j] == 1 :
+                px = loc[0] + j 
+                py = loc[1] + i
+                if px < 0 or px > len(B) or py < 0 or py > len(B[0]) :
+                    return False
+    return True
+
+# -
+
+
 
 
 
