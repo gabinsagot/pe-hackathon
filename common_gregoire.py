@@ -33,10 +33,10 @@ def emplacements_possibles(P,B) :
     for i in range(len(B)) :
         for j in range(len(B[0])) :
             if peut_placer(P,B,(i,j)) :
-                placement.append(1)
+                placements.append(1)
             else :
-                placement.append(0)
-            
+                placements.append(0)
+    return placements
 
 def peut_placer(P,B,loc) :
     px,py = 0,0
