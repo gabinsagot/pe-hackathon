@@ -20,10 +20,11 @@ import numpy as np
 def into_numpy(d) :
     L = {}
     for i,v in d.items() :
-        
-    return np.array(L)
+        L[i] = np.array(v)
+    return L
 
 
+into_numpy(RAW_SHAPES)
 
 
 
