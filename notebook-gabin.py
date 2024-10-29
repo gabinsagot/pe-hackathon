@@ -33,19 +33,14 @@ RAW_SHAPES = {
     "Z": [[1, 1, 0], [0, 1, 0], [0, 1, 1]],
 }
 
-
 # %%
-def symetrie(lettre):
-    L = []
-    l1, l2 = lettre, lettre
-    for j in range(3):
-        l1[j][0]= l1[j][2]
-        l2[0][j] = l2[2][j]
-    L.append(l1)
-    L.append(l2)
-    return L
+#Dans l'hypothèse où les lettres sont des ndarray
+num = np.array([[1, 0, 0], [1, 1, 1], [0, 1, 0]])
+def sym1(lettre):
+    return np.flip(lettre, axis = 0)
 
+sym1(num)
 
 # %%
 F = RAW_SHAPES["F"]
-symetrie(F)
+F, symetrie1(F)
