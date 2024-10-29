@@ -33,14 +33,50 @@ RAW_SHAPES = {
     "Z": [[1, 1, 0], [0, 1, 0], [0, 1, 1]],
 }
 
+
+# %%
+def into_numpy(d) :
+    L = {}
+    for i,v in d.items() :
+        L[i] = np.array(v)
+    return L
+
+
+# %%
+Lettres = into_numpy(RAW_SHAPES)
+
+
 # %%
 #Dans l'hypothèse où les lettres sont des ndarray
-num = np.array([[1, 0, 0], [1, 1, 1], [0, 1, 0]])
+
 def sym1(lettre):
     return np.flip(lettre, axis = 0)
+def sym2(lettre):
+    return np.flip(lettre, axis = 1)
+def rot1(lettre):
+    return np.rot90(lettre)
+def rot2(lettre):
+    return np.rot90(lettre, 3)
 
-sym1(num)
 
 # %%
-F = RAW_SHAPES["F"]
-F, symetrie1(F)
+np.rot90(num), num, np.rot90(num, 3)
+
+
+# %%
+#Pour l'instant, il y a des répétitions. Je n'ai pas su les empêcher
+def transformations(lettres):
+    d = {}
+    for lettre in lettres:
+        array = lettres[lettre]
+        L = [sym1(array), sym2(array), sym1(sym2(array)), 
+             rot1(array), sym1(rot1(array)), sym2(rot1(array)), 
+             rot2(array), sym1(rot2(array)), sym2(rot2(array))]
+        d[lettre]= L
+    return d
+
+
+# %%
+transformations(Lettres)
+
+# %%
